@@ -1,1 +1,1 @@
-# django-s3-like-storage
+# Your own Amazon S3 server

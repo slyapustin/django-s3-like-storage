@@ -1,0 +1,6 @@
+notes.txt
+*.sqlite3
+__pycache__/
+media/
+.env
+.vscode/
