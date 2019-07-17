@@ -12,7 +12,7 @@ from .models import Blob, Bucket
 def main(request, bucket_name, path):
     bucket = get_object_or_404(Bucket, name=bucket_name)
     if request.method == 'PUT':
-        if not bucket.has_write_permission(request):
+        if not bucket.verify_request(request):
             return HttpResponse(status=403)
 
         blob = Blob.objects.filter(bucket=bucket, path=path).first()

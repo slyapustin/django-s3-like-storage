@@ -1,1 +1,2 @@
 django==2.2.3
+git+git://github.com/inoks/python-aws-sig.git#egg=awssig
