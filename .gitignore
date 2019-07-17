@@ -4,3 +4,7 @@ __pycache__/
 media/
 .env
 .vscode/
+
+# Ignore Jupyter notebook files
+.ipynb_checkpoints/
+*.ipynb
