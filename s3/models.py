@@ -4,7 +4,7 @@ import string
 from email import header
 
 import awssig
-from django.core.validators import MinLengthValidator
+from django.core.validators import MinLengthValidator, validate_slug
 from django.db import models
 from django.db.models import Sum
 
@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 class Bucket(models.Model):
     # https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html
-    name = models.CharField(validators=[MinLengthValidator(3)], max_length=63)
+    name = models.CharField(validators=[MinLengthValidator(3), validate_slug], max_length=63, unique=True)
     access_key = models.CharField(max_length=16, default='', blank=True)
     secret_key = models.CharField(max_length=128, default='', blank=True)
 
