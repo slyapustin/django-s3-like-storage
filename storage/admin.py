@@ -10,7 +10,7 @@ class BlobAdmin(admin.ModelAdmin):
 
 
 class BucketAdmin(admin.ModelAdmin):
-    list_display = ['name', 'access_key', 'size']
+    list_display = ['name', 'access_key_id', 'size']
 
 admin.site.register(Blob, BlobAdmin)
 admin.site.register(Bucket, BucketAdmin)

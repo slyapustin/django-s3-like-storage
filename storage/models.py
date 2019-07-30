@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 class Bucket(models.Model):
     # https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html
     name = models.CharField(validators=[MinLengthValidator(3), validate_slug], max_length=63, unique=True)
-    access_key = models.CharField(max_length=16, default='', blank=True)
+    access_key_id = models.CharField(max_length=16, default='', blank=True)
     secret_key = models.CharField(max_length=128, default='', blank=True)
 
     def __str__(self):
@@ -40,7 +40,7 @@ class Bucket(models.Model):
             body=request.body,
             region="us-east-1",
             service="s3",
-            key_mapping={self.access_key: self.secret_key},
+            key_mapping={self.access_key_id: self.secret_key},
             timestamp_mismatch=None)
         try:
             v.verify()
@@ -57,8 +57,8 @@ class Bucket(models.Model):
         return filesizeformat(self.blob_set.aggregate(Sum('size')).get('size__sum', 0))
 
     def save(self, *args, **kwargs):
-        if not self.access_key:
-            self.access_key = ''.join(random.choice(
+        if not self.access_key_id:
+            self.access_key_id = ''.join(random.choice(
                 string.ascii_letters + string.digits) for i in range(16))
         if not self.secret_key:
             self.secret_key = ''.join(random.choice(
