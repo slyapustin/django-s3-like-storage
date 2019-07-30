@@ -73,7 +73,7 @@ class Blob(models.Model):
     file = models.FileField()
 
     # TODO move extra meta fields to the PostgreSQL JSONField
-    content_type = models.CharField(max_length=512, default='')
+    content_type = models.CharField(max_length=128, default='')
     size = models.IntegerField(default=0)
 
     def __str__(self):
