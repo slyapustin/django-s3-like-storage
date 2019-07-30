@@ -2,9 +2,12 @@ notes.txt
 *.sqlite3
 __pycache__/
 media/
-.env
+*.env
 .vscode/
 
 # Ignore Jupyter notebook files
 .ipynb_checkpoints/
 *.ipynb
+
+# Local deployment donfiguration
+_deploy.sh

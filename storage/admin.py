@@ -5,7 +5,8 @@ from .models import Blob, Bucket
 
 class BlobAdmin(admin.ModelAdmin):
     list_display = ['bucket', 'path', 'content_type', 'size']
-    readonly_fields = ['bucket', 'path', 'file', 'content_type', 'size']
+    readonly_fields = ['bucket', 'path', 'content_type', 'size']
+    exclude = ['file']
 
 
 class BucketAdmin(admin.ModelAdmin):

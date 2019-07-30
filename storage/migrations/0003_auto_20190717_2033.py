@@ -8,7 +8,7 @@ import re
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('s3', '0002_auto_20190717_1006'),
+        ('storage', '0002_auto_20190717_1006'),
     ]
 
     operations = [

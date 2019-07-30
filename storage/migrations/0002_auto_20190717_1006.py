@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('s3', '0001_initial'),
+        ('storage', '0001_initial'),
     ]
 
     operations = [

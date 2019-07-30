@@ -1,0 +1,26 @@
+version: '3.3'
+services:
+  app:
+    build: .
+    command: bash -c "python ./manage.py migrate --noinput
+      && python manage.py collectstatic --noinput
+      && gunicorn project.wsgi:application --workers 10 --bind :8000"
+    env_file:
+      - docker.env
+    ports:
+      - "127.0.0.1:8005:8000"
+    depends_on:
+      - postgres
+    volumes:
+          - media-data:/app/media
+
+  postgres:
+    image: postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql
+
+volumes:
+  postgres-data:
+    driver: local
+  media-data:
+    driver: local

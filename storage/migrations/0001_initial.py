@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
                 ('file', models.FileField(upload_to='')),
                 ('content_type', models.CharField(default='', max_length=512)),
                 ('size', models.IntegerField(default=0)),
-                ('bucket', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='s3.Bucket')),
+                ('bucket', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='storage.Bucket')),
             ],
         ),
     ]
