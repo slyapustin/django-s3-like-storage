@@ -8,6 +8,7 @@ class BlobAdmin(admin.ModelAdmin):
     readonly_fields = ['bucket', 'path', 'content_type', 'size']
     exclude = ['file']
     list_filter = ['created_on', 'updated_on']
+    search_fields = ['path']
 
 
 class BucketAdmin(admin.ModelAdmin):
