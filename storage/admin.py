@@ -4,14 +4,14 @@ from .models import Blob, Bucket
 
 
 class BlobAdmin(admin.ModelAdmin):
-    list_display = ['bucket', 'path', 'content_type', 'size']
+    list_display = ['bucket', 'path', 'content_type', 'size', 'created_on']
     readonly_fields = ['bucket', 'path', 'content_type', 'size']
     exclude = ['file']
+    list_filter = ['created_on', 'updated_on']
 
 
 class BucketAdmin(admin.ModelAdmin):
-    list_display = ['name', 'access_key_id', 'size', 'created_on']
-    list_filter = ['created_on', 'updated_on']
+    list_display = ['name', 'access_key_id', 'size']
     search_fields = ['name']
 
 admin.site.register(Blob, BlobAdmin)
