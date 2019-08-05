@@ -1,0 +1,10 @@
+.git/
+*.env
+.vscode/
+
+# Ignore Jupyter notebook files
+.ipynb_checkpoints/
+*.ipynb
+
+# Local deployment donfiguration
+_deploy.sh
