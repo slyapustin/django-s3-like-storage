@@ -7,7 +7,7 @@ services:
       && gunicorn project.wsgi:application --workers 10 --bind :8000"
     env_file:
       - docker.env
-    envrionment:
+    environment:
       - DATABASE_URL=postgres://postgres:postres@postgres:5432/postgres
     ports:
       - "127.0.0.1:8005:8000"
