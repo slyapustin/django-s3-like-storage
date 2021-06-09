@@ -1,4 +1,4 @@
-django==2.2.10
+django==2.2.22
 #awssig==0.2.2
 git+git://github.com/inoks/python-aws-sig.git#egg=awssig
 
