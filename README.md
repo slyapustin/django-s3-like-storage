@@ -41,4 +41,4 @@ AWS_DEFAULT_ACL='public-read'
 
 ### Demo project
 
-Demo project, which utilize that app available [here](https://github.com/inoks/django-classified-demo).
+Demo project, which utilize that app available [here](https://github.com/slyapustin/django-classified-demo).
