@@ -1,6 +1,6 @@
 django==2.2.28
 #awssig==0.2.2
-git+git://github.com/inoks/python-aws-sig.git#egg=awssig
+git+git://github.com/slyapustin/python-aws-sig.git#egg=awssig
 
 # Deployment
 gunicorn==19.9.0
