@@ -9,20 +9,9 @@ That is especially useful if your deploy application to the cloud providers (for
 
 ## Deployment
 
-Create `docker.env` file with:
-
- - `SECRET_KEY` - Django Secret Key
-
- Build and Run via:
- ```
- docker-compose up -d
- ```
-
-Create an Administrator account:
-
-```
-docker-compose exec app python ./manage.py createsuperuser
-```
+- Create an `.env` file based on the `.env.example`
+- Build and run app via Docker: `docker-compose up -d`  (if you on Apple Silicon, you need to do `export DOCKER_DEFAULT_PLATFORM=linux/amd64` first)
+- Create an Administrator account: `docker-compose exec app python ./manage.py createsuperuser`
 
 ## Using in your Application
 

@@ -1,25 +1,36 @@
-version: '3.3'
+version: '3'
 services:
   app:
     build: .
     command: bash -c "python ./manage.py migrate --noinput
       && python manage.py collectstatic --noinput
-      && gunicorn project.wsgi:application --workers 10 --bind :8000"
+      && gunicorn project.wsgi:application --bind :8000"
+    volumes:
+      - .:/app
     env_file:
-      - docker.env
+      - .env
     environment:
-      - DATABASE_URL=postgres://postgres:postres@postgres:5432/postgres
+      - DATABASE_URL=postgres://postgres:postgres@postgres:5432/postgres
     ports:
-      - "127.0.0.1:8005:8000"
+      - "8000:8000"
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     volumes:
           - media-data:/app/media
 
   postgres:
-    image: postgres
+    image: postgres:14.4
     volumes:
       - postgres-data:/var/lib/postgresql
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    user: postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
   postgres-data:
