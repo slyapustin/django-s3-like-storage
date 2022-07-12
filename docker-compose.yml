@@ -7,10 +7,9 @@ services:
       && gunicorn project.wsgi:application --bind :8000"
     volumes:
       - .:/app
-    env_file:
-      - .env
     environment:
       - DATABASE_URL=postgres://postgres:postgres@postgres:5432/postgres
+      - SECRET_KEY=${SECRET_KEY}
     ports:
       - "8000:8000"
     depends_on:
