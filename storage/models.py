@@ -54,7 +54,7 @@ class Bucket(models.Model):
 
     @property
     def size(self):
-        return filesizeformat(self.blob_set.aggregate(Sum('size')).get('size__sum', 0))
+        return filesizeformat(self.blobs.aggregate(Sum('size')).get('size__sum', 0))
 
     def save(self, *args, **kwargs):
         if not self.access_key_id:
@@ -68,7 +68,7 @@ class Bucket(models.Model):
 
 
 class Blob(models.Model):
-    bucket = models.ForeignKey(Bucket, on_delete=models.CASCADE)
+    bucket = models.ForeignKey(Bucket, on_delete=models.PROTECT, related_name='blobs')
     path = models.CharField(max_length=512)
     file = models.FileField()
 

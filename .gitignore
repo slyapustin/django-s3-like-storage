@@ -2,8 +2,10 @@ notes.txt
 *.sqlite3
 __pycache__/
 media/
-*.env
+.env
 .vscode/
+venv/
+
 
 # Ignore Jupyter notebook files
 .ipynb_checkpoints/
